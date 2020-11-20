@@ -1,10 +1,15 @@
-# #100DaysOfCode Log - Round 1 - [Your Name Here]
+# #100DaysOfCode Log - Round 1 - Harpreet Bhatia
 
-The log of my #100DaysOfCode challenge. Started on [July 17, Monday, 2017].
+The log of my #100DaysOfCode challenge. Started on [November 20, Friday, 2020].
 
 ## Log
 
-### R1D1 
-Started a Weather App. Worked on the draft layout of the app, struggled with OpenWeather API http://www.example.com
+### Day 1: June 13. Monday
 
-### R1D2
+**Today's Progress**: Exploring some ML libraries in Python for my project and see how I can leverage those
+
+**Thoughts:** After years of tinkering with legacy code, I look forward to start coding from scratch
+
+**Link to work:** nothing yet
+
+
