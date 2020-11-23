@@ -19,7 +19,7 @@ The log of my #100DaysOfCode challenge. Started on [November 20, Friday, 2020].
 
 **Thoughts:** 
 
-**Link to work:** https://codingbat.com/done?user=hs.bhtia@gmail.com&tag=1644523091
+**Link to work:** [CodingBat Progress](https://codingbat.com/done?user=hs.bhtia@gmail.com&tag=1644523091)
 
 ### Day 3: November 22, Sunday
 
@@ -27,7 +27,7 @@ The log of my #100DaysOfCode challenge. Started on [November 20, Friday, 2020].
 
 **Thoughts:** 
 
-**Link to work:** https://codingbat.com/done?user=hs.bhtia@gmail.com&tag=1644523091
+**Link to work:** [CodingBat Progress](https://codingbat.com/done?user=hs.bhtia@gmail.com&tag=1644523091)
 
 
 
