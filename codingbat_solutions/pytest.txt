@@ -1,0 +1,706 @@
+import pytest
+
+def sleep_in(weekday, vacation):
+  if weekday==False and vacation==False:
+    return True
+  if weekday==True and vacation==False:
+    return False
+  if weekday==False and vacation==True:
+    return True
+  if weekday==True and vacation==True:
+    return True
+  return False
+
+
+def test_answer():
+  assert sleep_in(False, False) == True
+  assert sleep_in(True, False) == False
+  assert sleep_in(False, True) == True
+  assert sleep_in(True, True) == True
+
+import pytest
+
+
+def not_string(str):
+  ## if (str.match('not')):
+  if len(str) >= 3 and str[:3] == 'not':
+    return str
+  else:
+    return 'not ' + str
+
+
+def test_answer():
+  assert not_string('candy') == 'not candy'
+  assert not_string('x') == 'not x'
+  assert not_string('not bad') == 'not bad'
+  assert not_string('bad') == 'not bad'
+  assert not_string('not') == 'not'
+  assert not_string('is not') == 'not is not'
+  assert not_string('no') == 'not no'
+
+import pytest
+
+
+def pos_neg(a, b, negative):
+  if (negative == True):
+    if (a < 0 and b < 0):
+      return True
+  else:
+    if ((a < 0 and b >= 0) or (a >= 0 and b < 0)):
+      return True
+  return False
+
+
+
+def test_answer():
+  assert pos_neg(1, -1, False) == True
+  assert pos_neg(-1, 1, False) == True
+  assert pos_neg(-4, -5, True) == True
+  assert pos_neg(-4, -5, False) == False
+  assert pos_neg(-4, 5, False) == True
+  assert pos_neg(-4, 5, True) == False
+  assert pos_neg(1, 1, False) == False
+  assert pos_neg(-1, -1, False) == False
+  assert pos_neg(1, -1, True) == False
+  assert pos_neg(-1, 1, True) == False
+  assert pos_neg(1, 1, True) == False
+  assert pos_neg(-1, -1, True) == True
+  assert pos_neg(5, -5, False) == True
+  assert pos_neg(-6, 6, False) == True
+  assert pos_neg(-5, -6, False) == False
+  assert pos_neg(-2, -1, False) == False
+  assert pos_neg(1, 2, False) == False
+  assert pos_neg(-5, 6, True) == False
+  assert pos_neg(-5, -5, True) == True
+
+import pytest
+
+def makes10(a, b):
+  return ((a == 10) or (b == 10) or (a+b == 10))
+
+def test_answer():
+  assert makes10(9, 10) == True
+  assert makes10(9, 9) == False
+  assert makes10(1, 9) == True
+  assert makes10(10, 1) == True
+  assert makes10(10, 10) == True
+  assert makes10(8, 2) == True
+  assert makes10(8, 3) == False
+  assert makes10(10, 42) == True
+  assert makes10(12, -2) == True
+
+import pytest
+
+
+def first_last6(nums):
+  return (nums[0] == 6 or nums[-1] == 6)
+
+def test_answer():
+  assert first_last6([1, 2, 6]) == True
+  assert first_last6([6, 1, 2, 3]) == True
+  assert first_last6([13, 6, 1, 2, 3]) == False
+  assert first_last6([13, 6, 1, 2, 6]) == True
+  assert first_last6([3, 2, 1]) == False
+  assert first_last6([3, 6, 1]) == False
+  assert first_last6([3, 6]) == True
+  assert first_last6([6]) == True
+  assert first_last6([3]) == False
+  assert first_last6([5, 6]) == True
+  assert first_last6([5, 5]) == False
+  assert first_last6([1, 2, 3, 4, 6]) == True
+  assert first_last6([1, 2, 3, 4]) == False
+
+import pytest
+
+def reverse3(nums):
+  nums.reverse()
+  return nums
+
+def test_answer():
+  assert reverse3([1, 2, 3]) == [3, 2, 1]
+  assert reverse3([5, 11, 9]) == [9, 11, 5]
+  assert reverse3([7, 0, 0]) == [0, 0, 7]
+  assert reverse3([2, 1, 2]) == [2, 1, 2]
+  assert reverse3([1, 2, 1]) == [1, 2, 1]
+  assert reverse3([2, 11, 3]) == [3, 11, 2]
+  assert reverse3([0, 6, 5]) == [5, 6, 0]
+  assert reverse3([7, 2, 3]) == [3, 2, 7]
+
+import pytest
+
+def sum2(nums):
+  if len(nums) < 1:
+    return 0
+  elif len(nums) < 2:
+    return nums[0]
+  else:
+    return nums[0] + nums[1]
+
+def test_answer():
+  assert sum2([1, 2, 3]) == 3
+  assert sum2([1, 1]) == 2
+  assert sum2([1, 1, 1, 1]) == 2
+  assert sum2([1, 2]) == 3
+  assert sum2([1]) == 1
+  assert sum2([]) == 0
+  assert sum2([4, 5, 6]) == 9
+  assert sum2([4]) == 4
+
+import pytest
+
+def same_first_last(nums):
+  if len(nums) > 0:
+    return (nums[0] == nums[-1])
+  return False
+
+def test_answer():
+  assert same_first_last([1, 2, 3]) == False
+  assert same_first_last([1, 2, 3, 1]) == True
+  assert same_first_last([1, 2, 1]) == True
+  assert same_first_last([7]) == True
+  assert same_first_last([]) == False
+  assert same_first_last([1, 2, 3, 4, 5, 1]) == True
+  assert same_first_last([1, 2, 3, 4, 5, 13]) == False
+  assert same_first_last([13, 2, 3, 4, 5, 13]) == True
+  assert same_first_last([7, 7]) == True
+
+import pytest
+
+def cigar_party(cigars, is_weekend):
+  if (is_weekend and cigars >=40):
+    return True
+  if (cigars >= 40 and cigars <= 60):
+    return True
+  return False
+  
+def test_answer():
+  assert cigar_party(30, False) == False
+  assert cigar_party(50, False) == True
+  assert cigar_party(70, True) == True
+  assert cigar_party(30, True) == False
+  assert cigar_party(50, True) == True
+  assert cigar_party(60, False) == True
+  assert cigar_party(61, False) == False
+  assert cigar_party(40, False) == True
+  assert cigar_party(39, False) == False
+  assert cigar_party(40, True) == True
+  assert cigar_party(39, True) == False
+
+import pytest
+def date_fashion(you, date):
+  if (you <= 2 or date <= 2):
+    return 0
+  if (you >= 8 or date >= 8):
+    return 2
+  return 1
+    
+def test_answer():
+  assert date_fashion(5, 10) == 2
+  assert date_fashion(5, 2) == 0
+  assert date_fashion(5, 5) == 1
+  assert date_fashion(3, 3) == 1
+  assert date_fashion(10, 2) == 0
+  assert date_fashion(2, 9) == 0
+  assert date_fashion(9, 9) == 2
+  assert date_fashion(10, 5) == 2
+  assert date_fashion(2, 2) == 0
+  assert date_fashion(3, 7) == 1
+  assert date_fashion(2, 7) == 0
+  assert date_fashion(6, 2) == 0
+
+import pytest
+
+
+def love6(a, b):
+  return (a == 6 or \
+          b == 6 or \
+          a + b == 6 or \
+          abs(a - b) == 6)
+
+
+def test_answer():
+  assert love6(6, 4) == True
+  assert love6(4, 5) == False
+  assert love6(1, 5) == True
+  assert love6(1, 6) == True
+  assert love6(1, 8) == False
+  assert love6(1, 7) == True
+  assert love6(7, 5) == False
+  assert love6(8, 2) == True
+  assert love6(6, 6) == True
+  assert love6(-6, 2) == False
+  assert love6(-4, -10) == True
+  assert love6(-7, 1) == False
+  assert love6(7, -1) == True
+  assert love6(-6, 12) == True
+  assert love6(-2, -4) == False
+  assert love6(7, 1) == True
+  assert love6(0, 9) == False
+  assert love6(8, 3) == False
+  assert love6(3, 3) == True
+  assert love6(3, 4) == False
+
+import pytest
+
+
+def alarm_clock(day, vacation):
+  if (vacation == True):
+    if (0 < day < 6):
+      return "10:00"
+    else:
+      return "off"
+  else:
+    if (0 < day < 6):
+      return "7:00"
+    else:
+      return "10:00"
+  return "off"
+
+
+def test_answer():
+  assert alarm_clock(1, False) == '7:00'
+  assert alarm_clock(5, False) == '7:00'
+  assert alarm_clock(0, False) == '10:00'
+  assert alarm_clock(6, False) == '10:00'
+  assert alarm_clock(0, True) == 'off'
+  assert alarm_clock(6, True) == 'off'
+  assert alarm_clock(1, True) == '10:00'
+  assert alarm_clock(3, True) == '10:00'
+  assert alarm_clock(5, True) == '10:00'
+
+import pytest
+
+def make_bricks(small, big, goal):
+  if goal > (big * 5) + small:
+    return False
+  required_small = goal % 5
+  if small < required_small:
+      return False
+  return True
+
+
+def test_answer():
+  assert make_bricks(3, 1, 8) == True
+  assert make_bricks(3, 1, 9) == False
+  assert make_bricks(3, 2, 10) == True
+  assert make_bricks(3, 2, 8) == True
+  assert make_bricks(3, 2, 9) == False
+  assert make_bricks(6, 1, 11) == True
+  assert make_bricks(6, 0, 11) == False
+  assert make_bricks(1, 4, 11) == True
+  assert make_bricks(0, 3, 10) == True
+  assert make_bricks(1, 4, 12) == False
+  assert make_bricks(3, 1, 7) == True
+  assert make_bricks(1, 1, 7) == False
+  assert make_bricks(2, 1, 7) == Truedddribkjukgfbjhulcvuicfnudjhiekb
+  assert make_bricks(7, 1, 11) == True
+  assert make_bricks(7, 1, 8) == True
+  assert make_bricks(7, 1, 13) == False
+  assert make_bricks(43, 1, 46) == True
+  assert make_bricks(40, 1, 46) == False
+  assert make_bricks(40, 2, 47) == True
+  assert make_bricks(40, 2, 50) == True
+  assert make_bricks(40, 2, 52) == False
+  assert make_bricks(22, 2, 33) == False
+  assert make_bricks(0, 2, 10) == True
+  assert make_bricks(1000000, 1000, 1000100) == True
+  assert make_bricks(2, 1000000, 100003) == False
+  assert make_bricks(20, 0, 19) == True
+  assert make_bricks(20, 0, 21) == False
+  assert make_bricks(20, 4, 51) == False
+  assert make_bricks(20, 4, 39) == True
+
+import pytest
+
+
+def lone_sum(a, b, c):
+  if (a == b and b == c):
+    return 0
+  if (a == b):
+    return c
+  if (b == c):
+    return a
+  if (c == a):
+    return b
+  return (a + b + c)
+
+def test_answer():
+  assert lone_sum(1, 2, 3) == 6
+  assert lone_sum(3, 2, 3) == 2
+  assert lone_sum(3, 3, 3) == 0
+  assert lone_sum(9, 2, 2) == 9
+  assert lone_sum(2, 2, 9) == 9
+  assert lone_sum(2, 9, 2) == 9
+  assert lone_sum(2, 9, 3) == 14
+  assert lone_sum(4, 2, 3) == 9
+  assert lone_sum(1, 3, 1) == 3
+
+import pytest
+
+
+def make_chocolate(small, big, goal):
+  if goal > (big * 5) + (small * 1):
+    return -1
+  elif (goal - (big * 5) > 0):
+    return (goal - (big * 5))
+  required_small = goal % 5
+  if (small < required_small):
+    return -1
+  return required_small
+
+def test_answer():
+  assert make_chocolate(4, 1, 9) == 4
+  assert make_chocolate(4, 1, 10) == -1
+  assert make_chocolate(4, 1, 7) == 2
+  assert make_chocolate(6, 2, 7) == 2
+  assert make_chocolate(4, 1, 5) == 0
+  assert make_chocolate(4, 1, 4) == 4
+  assert make_chocolate(5, 4, 9) == 4
+  assert make_chocolate(9, 3, 18) == 3
+  assert make_chocolate(3, 1, 9) == -1
+  assert make_chocolate(1, 2, 7) == -1
+  assert make_chocolate(1, 2, 6) == 1
+  assert make_chocolate(1, 2, 5) == 0
+  assert make_chocolate(6, 1, 10) == 5
+  assert make_chocolate(6, 1, 11) == 6
+  assert make_chocolate(6, 1, 12) == -1
+  assert make_chocolate(6, 1, 13) == -1
+  assert make_chocolate(6, 2, 10) == 0
+  assert make_chocolate(6, 2, 11) == 1
+  assert make_chocolate(6, 2, 12) == 2
+  assert make_chocolate(60, 100, 550) == 50
+  assert make_chocolate(1000, 1000000, 5000006) == 6
+  assert make_chocolate(7, 1, 12) == 7
+  assert make_chocolate(7, 1, 13) == -1
+  assert make_chocolate(7, 2, 13) == 3
+
+import pytest
+
+
+def no_teen_sum(a, b, c):
+  return fix_teen(a) + \
+          fix_teen(b) + \
+          fix_teen(c)
+  
+def fix_teen(n):
+  if ((12 < n < 20) and (n != 15) and (n != 16)):
+    return 0
+  return n
+
+
+def test_answer():
+  assert no_teen_sum(1, 2, 3) == 6
+  assert no_teen_sum(2, 13, 1) == 3
+  assert no_teen_sum(2, 1, 14) == 3
+  assert no_teen_sum(2, 1, 15) == 18
+  assert no_teen_sum(2, 1, 16) == 19
+  assert no_teen_sum(2, 1, 17) == 3
+  assert no_teen_sum(17, 1, 2) == 3
+  assert no_teen_sum(2, 15, 2) == 19
+  assert no_teen_sum(16, 17, 18) == 16
+  assert no_teen_sum(17, 18, 19) == 0
+  assert no_teen_sum(15, 16, 1) == 32
+  assert no_teen_sum(15, 15, 19) == 30
+  assert no_teen_sum(15, 19, 16) == 31
+  assert no_teen_sum(5, 17, 18) == 5
+  assert no_teen_sum(17, 18, 16) == 16
+  assert no_teen_sum(17, 19, 18) == 0
+
+import pytest
+Medium python string problems -- 1 loop.. Use + to combine strings, len(str) is the number of chars in a String, str[i:j] extracts the substring starting at index i and running up to but not including index j.
+
+
+def double_char(str):
+  double_char_str = ""
+  for i in range(len(str)):
+    double_char_str += (str[i] + str[i])
+  return double_char_str
+
+def test_answer():
+  assert double_char('The') == 'TThhee'
+  assert double_char('AAbb') == 'AAAAbbbb'
+  assert double_char('Hi-There') == 'HHii--TThheerree'
+  assert double_char('Word!') == 'WWoorrdd!!'
+  assert double_char('!!') == '!!!!'
+  assert double_char('') == ''
+  assert double_char('a') == 'aa'
+  assert double_char('.') == '..'
+  assert double_char('aa') == 'aaaa'
+
+import pytest
+
+def count_hi(str):
+count = 0
+for i in range(len(str) - 1):
+  if (str[i:i+2] == 'hi'):
+    count += 1
+return count
+
+def test_answer():
+  assert count_hi('abc hi ho') == 1
+  assert count_hi('ABChi hi') == 2
+  assert count_hi('hihi') == 2
+  assert count_hi('hiHIhi') == 2
+  assert count_hi('') == 0
+  assert count_hi('h') == 0
+  assert count_hi('hi') == 1
+  assert count_hi('Hi is no HI on ahI') == 0
+  assert count_hi('hiho not HOHIhi') == 2
+
+import pytest
+
+def cat_dog(str):
+  return (count(str, "cat") == count(str, "dog"))
+  return False
+
+def count(str, word):
+  count = 0
+  for i in range(len(str) - len(word) + 1):
+    if (str[i:i+len(word)] == word):
+      count += 1
+  return count
+
+def test_answer():
+  assert cat_dog('catdog') == True
+  assert cat_dog('catcat') == False
+  assert cat_dog('1cat1cadodog') == True
+  assert cat_dog('catxxdogxxxdog') == False
+  assert cat_dog('catxdogxdogxcat') == True
+  assert cat_dog('catxdogxdogxca') == False
+  assert cat_dog('dogdogcat') == False
+  assert cat_dog('dogogcat') == True
+  assert cat_dog('dog') == False
+  assert cat_dog('cat') == False
+  assert cat_dog('ca') == True
+  assert cat_dog('c') == True
+  assert cat_dog('') == True
+
+import pytest
+
+def count_code(str):
+  count = 0
+  for i in range(len(str) - 3):
+    if (str[i:i+2] == 'co' and str[i+3] == 'e'):
+      count += 1
+  return count
+
+def test_answer():
+  assert count_code('aaacodebbb') == 1
+  assert count_code('codexxcode') == 2
+  assert count_code('cozexxcope') == 2
+  assert count_code('cozfxxcope') == 1
+  assert count_code('xxcozeyycop') == 1
+  assert count_code('cozcop') == 0
+  assert count_code('abcxyz') == 0
+  assert count_code('code') == 1
+  assert count_code('ode') == 0
+  assert count_code('c') == 0
+  assert count_code('') == 0
+  assert count_code('AAcodeBBcoleCCccoreDD') == 3
+  assert count_code('AAcodeBBcoleCCccorfDD') == 2
+  assert count_code('coAcodeBcoleccoreDD') == 3
+
+import pytest
+
+def end_other(a, b):
+  str_a = a.lower()
+  str_b = b.lower()
+  return (str_a.endswith(str_b) or str_b.endswith(str_a))
+
+
+def test_answer():
+  assert end_other('Hiabc', 'abc') == True
+  assert end_other('AbC', 'HiaBc') == True
+  assert end_other('abc', 'abXabc') == True
+  assert end_other('Hiabc', 'abcd') == False
+  assert end_other('Hiabc', 'bc') == True
+  assert end_other('Hiabcx', 'bc') == False
+  assert end_other('abc', 'abc') == True
+  assert end_other('xyz', '12xyz') == True
+  assert end_other('yz', '12xz') == False
+  assert end_other('Z', '12xz') == True
+  assert end_other('12', '12') == True
+  assert end_other('abcXYZ', 'abcDEF') == False
+  assert end_other('ab', 'ab12') == False
+  assert end_other('ab', '12ab') == True
+
+import pytest
+
+def count_evens(nums):
+  count = 0
+  for i in range(len(nums)):
+    if (nums[i] % 2 == 0):
+      count += 1
+  return count
+
+
+def count_evens(nums):
+  count = 0
+  for num in nums:
+    if (num % 2 == 0):
+      count += 1
+  return count
+
+def test_answer():
+  assert count_evens([2, 1, 2, 3, 4]) == 3
+  assert count_evens([2, 2, 0]) == 3
+  assert count_evens([1, 3, 5]) == 0
+  assert count_evens([]) == 0
+  assert count_evens([11, 9, 0, 1]) == 1
+  assert count_evens([2, 11, 9, 0]) == 2
+  assert count_evens([2]) == 1
+  assert count_evens([2, 5, 12]) == 2
+
+import pytest
+
+def big_diff(nums):
+  if (len(nums) < 2):
+    return 0
+
+  smallest = nums[0]
+  largest = nums[0]
+  for num in nums:
+    smallest = min(smallest, num)
+    largest = max(largest, num)
+  return (largest - smallest)
+    
+def test_answer():
+  assert big_diff([10, 3, 5, 6]) == 7
+  assert big_diff([7, 2, 10, 9]) == 8
+  assert big_diff([2, 10, 7, 2]) == 8
+  assert big_diff([2, 10]) == 8
+  assert big_diff([10, 2]) == 8
+  assert big_diff([10, 0]) == 10
+  assert big_diff([2, 3]) == 1
+  assert big_diff([2, 2]) == 0
+  assert big_diff([2]) == 0
+  assert big_diff([5, 1, 6, 1, 9, 9]) == 8
+  assert big_diff([7, 6, 8, 5]) == 3
+  assert big_diff([7, 7, 6, 8, 5, 5, 6]) == 3
+
+import pytest
+
+
+
+def sum13(nums):
+  sum = 0
+  i = 0
+  while i < len(nums):
+    if (nums[i] == 13):
+      i += 2
+      continue
+    sum += nums[i]
+    i += 1
+  return sum
+ 
+def test_answer():
+  assert sum13([1, 2, 2, 1]) == 6
+  assert sum13([1, 1]) == 2
+  assert sum13([1, 2, 2, 1, 13]) == 6
+  assert sum13([1, 2, 13, 2, 1, 13]) == 4
+  assert sum13([13, 1, 2, 13, 2, 1, 13]) == 3
+  assert sum13([]) == 0
+  assert sum13([13]) == 0
+  assert sum13([13, 13]) == 0
+  assert sum13([13, 0, 13]) == 0
+  assert sum13([13, 1, 13]) == 0
+  assert sum13([5, 7, 2]) == 14
+  assert sum13([5, 13, 2]) == 5
+  assert sum13([0]) == 0
+  assert sum13([13, 0]) == 0
+
+import pytest
+
+
+def centered_average(nums):
+  sum = 0
+  for num in nums:
+    sum += num
+  sum -= (smallest(nums) + largest(nums))
+  avg = sum / (len(nums) - 2)
+  return avg
+  
+
+def smallest(nums):
+  smallest = nums[0]
+  for num in nums:
+    smallest = min(smallest, num)
+  return smallest
+
+def largest(nums):
+  largest = nums[0]
+  for num in nums:
+    largest = max(largest, num)
+  return largest
+
+def test_answer():
+  assert centered_average([1, 2, 3, 4, 100]) == 3
+  assert centered_average([1, 1, 5, 5, 10, 8, 7]) == 5
+  assert centered_average([-10, -4, -2, -4, -2, 0]) == -3
+  assert centered_average([5, 3, 4, 6, 2]) == 4
+  assert centered_average([5, 3, 4, 0, 100]) == 4
+  assert centered_average([100, 0, 5, 3, 4]) == 4
+  assert centered_average([4, 0, 100]) == 4
+  assert centered_average([0, 2, 3, 4, 100]) == 3
+  assert centered_average([1, 1, 100]) == 1
+  assert centered_average([7, 7, 7]) == 7
+  assert centered_average([1, 7, 8]) == 7
+  assert centered_average([1, 1, 99, 99]) == 50
+  assert centered_average([1000, 0, 1, 99]) == 50
+  assert centered_average([4, 4, 4, 4, 5]) == 4
+  assert centered_average([4, 4, 4, 1, 5]) == 4
+  assert centered_average([6, 4, 8, 12, 3]) == 6
+
+import pytest
+def has22(nums):
+  for i in range(len(nums) -1):
+    if (nums[i] == 2 and nums[i+1] == 2):
+      return True
+  return False
+      
+def test_answer():
+  assert has22([1, 2, 2]) == True
+  assert has22([1, 2, 1, 2]) == False
+  assert has22([2, 1, 2]) == False
+  assert has22([2, 2, 1, 2]) == True
+  assert has22([1, 3, 2]) == False
+  assert has22([1, 3, 2, 2]) == True
+  assert has22([2, 3, 2, 2]) == True
+  assert has22([4, 2, 4, 2, 2, 5]) == True
+  assert has22([1, 2]) == False
+  assert has22([2, 2]) == True
+  assert has22([2]) == False
+  assert has22([]) == False
+  assert has22([3, 3, 2, 2]) == True
+  assert has22([5, 2, 5, 2]) == False
+
+import pytest
+
+def sum67(nums):
+  found6 = False
+  sum = 0
+  for num in nums:
+    if (num == 6): found6 = True
+    if (found6 and num == 7): 
+      found6 = False
+      continue
+    if found6: continue
+    sum += num
+  return sum
+  
+
+def test_answer():
+  assert sum67([1, 2, 2]) == 5
+  assert sum67([1, 2, 2, 6, 99, 99, 7]) == 5
+  assert sum67([1, 1, 6, 7, 2]) == 4
+  assert sum67([1, 6, 2, 2, 7, 1, 6, 99, 99, 7]) == 2
+  assert sum67([1, 6, 2, 6, 2, 7, 1, 6, 99, 99, 7]) == 2
+  assert sum67([2, 7, 6, 2, 6, 7, 2, 7]) == 18
+  assert sum67([2, 7, 6, 2, 6, 2, 7]) == 9
+  assert sum67([1, 6, 7, 7]) == 8
+  assert sum67([6, 7, 1, 6, 7, 7]) == 8
+  assert sum67([6, 8, 1, 6, 7]) == 0
+  assert sum67([]) == 0
+  assert sum67([6, 7, 11]) == 11
+  assert sum67([11, 6, 7, 11]) == 22
+  assert sum67([2, 2, 6, 7, 7]) == 11
